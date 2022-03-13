@@ -86,8 +86,8 @@ describe('TornadoPoolCustom', function () {
 
   it('deposit 0.08 ETH in L1 withdraw 0.05 ETH in L2', async () => {
     const { merkleTreeWithHistory } = await loadFixture(fixtureTree)
-    const gas = await merkleTreeWithHistory.estimateGas.hashLeftRight(toFixedHex(123), toFixedHex(456))
-    console.log('hasher gas', gas - 21000)
+    const gas = await merkleTreeWithHistory.estimateGas.insert(toFixedHex(123), toFixedHex(456))
+    console.log('insert gas', gas - 21000)
 
     const { tornadoPool, token, omniBridge } = await loadFixture(fixture)
     const aliceKeypair = new Keypair() // contains private and public keys
